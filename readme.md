@@ -8,4 +8,5 @@ This is a full stack project using MERN:
 [FrontEnd: React, HTML, CSS, Javascript],
 [BackEnd: Node.js, ExpressJs],
 [Database: MongoDB, Mongoose],
-[Editor: VS Code ]
+[Editor: VS Code ],
+[Utility: Nodemon]

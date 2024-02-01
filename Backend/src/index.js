@@ -24,7 +24,7 @@ app.get('/api/jokes', (req, res) => {
         } 
     ]
     
-    res.send(jokes, name)
+    res.send(jokes)
 })
 
 const port = process.env.port || 3000;
