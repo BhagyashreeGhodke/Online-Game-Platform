@@ -9,4 +9,4 @@ This is a full stack project using MERN:
 [BackEnd: Node.js, ExpressJs, Mongoose, Dotenv],
 [Database: MongoDB Atlas],
 [Editor: VS Code ],
-[Utility: Nodemon]
+[Utility: Nodemon, Cloudinary]
