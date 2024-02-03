@@ -3,12 +3,14 @@ import {ApiError} from "../utils/apiError.js";
 import { User } from "../models/user.models.js"
 import {uploadOnCloudinary} from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/apiResponse.js";
+// import multer from "multer";
 
 const registerUser = asyncHandler( async (req, res) => {
     //user datails
 
     const {fullName, username, email, password}= req.body
-    console.log(`email: ${email}, username: ${username}`);
+    // console.log(`email: ${email}, username: ${username}`);
+    // console.log(req.body);
 
     //validations
     
@@ -20,7 +22,7 @@ const registerUser = asyncHandler( async (req, res) => {
     }
 
     //user exists or not
-    const existedUser = User.findOne({
+    const existedUser = await User.findOne({
         $or: [ { email }, { username } ]
     })
 
@@ -30,20 +32,21 @@ const registerUser = asyncHandler( async (req, res) => {
 
     //check avatar
 
-    const avatarLoacalPath = req.files?.avatar[0]?.path
-    console.log("req.files: ",req.files);
+    const avatarLocalPath = await req.files?.avatar[0]?.path
+    // const avatarLocalPath = req.files?.avatar[0]?.path;
+    // console.log("req.files: ",req.files);
 
-    if (!avatarLoacalPath) {
+    if (!avatarLocalPath) {
         throw new ApiError(400, "Avatar file is required")
     }
 
     //upload avatar on cloudinary
 
-    const avatar= await uploadOnCloudinary(avatarLoacalPath)
+    const avatar= await uploadOnCloudinary(avatarLocalPath)
 
     //check avatar is uploaded on cloudinary
     if (!avatar) {
-        throw new ApiError(400, "Avatar file is required")
+        throw new ApiError(401, "Avatar file is required")
     }
 
     //create user obj: create user entry in db

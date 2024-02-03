@@ -37,10 +37,10 @@ const userSchema = new Schema(
         refreshToken: {
             type: String
         },
-        admin: {
-            type: Schema.Types.ObjectId,
-            ref: "Admin"
-        }
+        // admin: {
+        //     type: Schema.Types.ObjectId,
+        //     ref: "Admin"
+        // }
     },
     {timestamps: true}
 )
