@@ -158,8 +158,8 @@ const logoutUser = asyncHandler(async (req, res) => {
    await  User.findByIdAndUpdate(
         req.user._id,
         {
-            $set: {
-                refreshToken: undefined
+            $unset: {
+                refreshToken: 1
             },
         },
         {
@@ -256,7 +256,9 @@ const chnageCurrentPassword = asyncHandler( async (req, res) => {
 const getCurrentUser = asyncHandler ( async (req, res) => {
     return res
     .status(200)
-    .json(200, req.user, "Current user fetched successfully")
+    .json(
+        new ApiResponse(200, req.user, "Current user fetched successfully")
+    )
 })
 
 const updateAccountDetails = asyncHandler( async (req, res) => {
@@ -314,6 +316,22 @@ const updateUserAvatar = asyncHandler( async (req, res) => {
         new ApiResponse(200, user, "Avatar updated successfully")
     )
 
+})
+
+const getUserProfile = asyncHandler( async (req, res) => {
+    const { username } = req.params
+
+    if (!username?.trim()) {
+        throw new ApiError(400, "Username is missing")
+    }
+
+    //update for dummy currency
+
+    // const userProfile =  await User.aggregate(
+    //     [
+
+    //     ]
+    // )
 })
 
 export {
