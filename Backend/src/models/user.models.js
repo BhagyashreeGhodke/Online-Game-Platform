@@ -1,3 +1,4 @@
+//Backend/src/models/user.models.js
 import mongoose, {Schema} from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";

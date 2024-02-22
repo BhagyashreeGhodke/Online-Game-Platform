@@ -1,3 +1,4 @@
+//Backend/src/index.js
 // require('dotenv').config({path: '../../env'});
 import dotenv from "dotenv";
 import connectDB from "./db/index.db.js";

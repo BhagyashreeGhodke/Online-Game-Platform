@@ -1,3 +1,4 @@
+//Backend/src/controllers/user.controllers.js
 import { asyncHandler } from "../utils/asyncHandler.js";
 import {ApiError} from "../utils/apiError.js";
 import { User } from "../models/user.models.js"
@@ -333,6 +334,76 @@ const getUserProfile = asyncHandler( async (req, res) => {
     //     ]
     // )
 })
+
+
+
+
+// {
+// // Store email verification tokens and their associated email addresses
+// const emailVerificationTokens = {};
+
+// // Endpoint to register a new user and send verification email
+// app.post('/api/register', (req, res) => {
+//   const { username, email } = req.body;
+
+//   // Generate a random verification token
+//   const verificationToken = Math.random().toString(36).substring(7);
+
+//   // Store the token with the associated email
+//   emailVerificationTokens[verificationToken] = email;
+
+//   // Send the verification email to the user's email address
+//   const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//       user: 'your-email@gmail.com',
+//       pass: 'your-email-password'
+//     }
+//   });
+
+//   const mailOptions = {
+//     from: 'your-email@gmail.com',
+//     to: email,
+//     subject: 'Email Verification',
+//     text: `Thank you for registering! Please click the following link to verify your email: http://localhost:8000/api/verify-email/${verificationToken}`
+//   };
+
+//   transporter.sendMail(mailOptions, (error, info) => {
+//     if (error) {
+//       console.log('Error sending email:', error);
+//       res.status(500).json({ message: 'Failed to send verification email. Please try again.' });
+//     } else {
+//       console.log('Email sent:', info.response);
+//       res.status(200).json({ message: 'Verification email sent successfully. Please check your email.' });
+//     }
+//   });
+// });
+
+// // Endpoint to verify email
+// app.get('/api/verify-email/:token', (req, res) => {
+//   const token = req.params.token;
+
+//   // Check if token exists in emailVerificationTokens
+//   if (emailVerificationTokens[token]) {
+//     // Implement your own logic to verify the email (e.g., update database)
+//     const email = emailVerificationTokens[token];
+//     console.log(`Email ${email} verified successfully.`);
+
+//     // Remove the token from emailVerificationTokens
+//     delete emailVerificationTokens[token];
+
+//     res.status(200).send('Email verified successfully.');
+//   } else {
+//     res.status(400).send('Invalid verification token.');
+//   }
+// });
+
+
+
+// app.listen(8000, () => {
+//   console.log('Server is running on port 8000');
+// });
+// }
 
 export {
     registerUser,
